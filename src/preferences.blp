@@ -111,6 +111,37 @@ template $Preferences: Adw.Dialog {
 					Adw.SwitchRow save_position_row {
 						title: _("Save Video Position on Close");
 						subtitle: _("This also save options like brightness, subtitle delay, etc.");
+
+						[prefix]
+						MenuButton {
+							icon-name: "info-outline-symbolic";
+							valign: center;
+
+							styles [
+								"flat",
+							]
+
+							popover: Popover {
+								styles [
+									"popover-scrolled",
+								]
+
+								width-request: 360;
+								height-request: 60;
+
+								ScrolledWindow {
+									Label {
+										label: _("This requires flatpak permission to read the folder where the video is stored");
+										wrap: true;
+										justify: center;
+
+										styles [
+											"warning",
+										]
+									}
+								}
+							};
+						}
 					}
 				}
 			}
