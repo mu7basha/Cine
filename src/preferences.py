@@ -37,7 +37,7 @@ class Preferences(Adw.Dialog):
     subtitle_lang_row = Gtk.Template.Child()
     audio_lang_row = Gtk.Template.Child()
     normalize_volume_row = Gtk.Template.Child()
-    save_position_row = Gtk.Template.Child()
+    save_position_switch = Gtk.Template.Child()
 
     def __init__(self, active_window, **kwargs):
         super().__init__(**kwargs)
@@ -98,7 +98,7 @@ class Preferences(Adw.Dialog):
         )
         settings.bind(
             "save-video-position",
-            self.save_position_row,
+            self.save_position_switch,
             "active",
             Gio.SettingsBindFlags.DEFAULT,
         )
