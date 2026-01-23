@@ -209,7 +209,6 @@ class CineApplication(Adw.Application):
             application_icon="io.github.diegopvlk.Cine",
             developer_name="Diego Povliuk",
             version=APP_VERSION,
-            developers=["Diego Povliuk"],
             copyright="© 2026 Diego Povliuk",
             license_type=Gtk.License.GPL_3_0,
         )
