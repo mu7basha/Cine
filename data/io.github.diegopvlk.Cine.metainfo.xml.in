@@ -32,8 +32,8 @@
   </description>
 
   <branding>
-    <color type="primary" scheme_preference="light">#a2e5e5</color>
-    <color type="primary" scheme_preference="dark">#005c6e</color>
+    <color type="primary" scheme_preference="light">#BDE7ED</color>
+    <color type="primary" scheme_preference="dark">#23576B</color>
   </branding>
 
   <screenshots>
