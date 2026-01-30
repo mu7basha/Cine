@@ -71,6 +71,8 @@ NEXT           playlist-next
 PREV           playlist-prev
 ctrl+[         frame-step -1 seek #{_("Go Back One Frame")}
 ctrl+]         frame-step 1 seek #{_("Advance One Frame")}
+Ctrl+LEFT      add chapter -1 #{_("Seek to the Previous Chapter")}
+Ctrl+RIGHT     add chapter 1 #{_("Seek to the Next Chapter")}
 VOLUME_UP      add volume 5
 VOLUME_DOWN    add volume -5
 MUTE           cycle mute
