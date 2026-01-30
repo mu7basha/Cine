@@ -39,6 +39,7 @@ class OptionsMenuButton(Gtk.MenuButton):
     contrast_spin: Gtk.SpinButton = Gtk.Template.Child()
     brightness_spin: Gtk.SpinButton = Gtk.Template.Child()
     gamma_spin: Gtk.SpinButton = Gtk.Template.Child()
+    hue_spin: Gtk.SpinButton = Gtk.Template.Child()
     saturation_spin: Gtk.SpinButton = Gtk.Template.Child()
     sub_delay_spin: Gtk.SpinButton = Gtk.Template.Child()
     audio_delay_spin: Gtk.SpinButton = Gtk.Template.Child()
@@ -60,6 +61,7 @@ class OptionsMenuButton(Gtk.MenuButton):
             self.brightness_spin,
             self.gamma_spin,
             self.saturation_spin,
+            self.hue_spin,
             self.sub_delay_spin,
             self.audio_delay_spin,
             self.speed_spin,
@@ -224,6 +226,15 @@ class OptionsMenuButton(Gtk.MenuButton):
     @Gtk.Template.Callback()
     def _on_saturation_reset(self, _btn):
         self.saturation_spin.set_value(0)
+
+    # --- HUE ---
+    @Gtk.Template.Callback()
+    def _on_hue_changed(self, spin):
+        self.win.mpv["hue"] = int(spin.get_value())
+
+    @Gtk.Template.Callback()
+    def _on_hue_reset(self, _btn):
+        self.hue_spin.set_value(0)
 
     # --- SUBTITLE DELAY ---
     @Gtk.Template.Callback()

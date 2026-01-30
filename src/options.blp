@@ -477,6 +477,61 @@ template $OptionsMenuButton: MenuButton {
           }
         }
 
+        // --- HUE ---
+        Box {
+          Box {
+            halign: start;
+
+            Button {
+              icon-name: "edit-undo-symbolic";
+              tooltip-text: _("Reset Hue");
+
+              styles [
+                "flat",
+              ]
+
+              clicked => $_on_hue_reset();
+            }
+
+            Label {
+              // TRANSLATORS: Do not use "Color" or "Temperature", those are different things
+              label: _("Hue");
+              wrap: true;
+              natural-wrap-mode: none;
+              halign: start;
+              margin-start: 8;
+
+              styles [
+                "heading",
+              ]
+            }
+          }
+
+          Separator {
+            hexpand: true;
+            opacity: 0;
+            margin-end: 2;
+          }
+
+          SpinButton hue_spin {
+            halign: end;
+            climb-rate: 1;
+
+            accessibility {
+              label: _("Hue");
+            }
+
+            adjustment: Adjustment {
+              lower: -100;
+              upper: 100;
+              step-increment: 1;
+              value: 0;
+            };
+
+            value-changed => $_on_hue_changed();
+          }
+        }
+
         // --- SUBTITLE DELAY ---
         Box {
           Box {
