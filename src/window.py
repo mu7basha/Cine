@@ -125,6 +125,7 @@ class CineWindow(Adw.ApplicationWindow):
         self.current_chapters: list = []
         self.actions: dict[str, Gio.SimpleAction] = {}
         self.prev_motion_xy: tuple = (0, 0)
+        self.prev_prog_motion_xy: tuple = (0, 0)
         self.volume_update_timer_id: int = 0
         self.inhibit_id: int = 0
         self.last_seek_scroll_time: float = 0
@@ -389,7 +390,6 @@ class CineWindow(Adw.ApplicationWindow):
     def _hide_ui(self, *args):
         try:
             if self.mpv:
-                self.chapter_popover.popdown()
                 self._hide_timeout_id = None
                 controls_hover = self.motion_controls.props.contains_pointer
                 header_hover = self.motion_header.props.contains_pointer
@@ -408,6 +408,7 @@ class CineWindow(Adw.ApplicationWindow):
                 )
                 if not active_or_hover:
                     self.revealer_ui.set_reveal_child(False)
+                    self.chapter_popover.popdown()
 
                 if (
                     self.is_fullscreen
@@ -637,7 +638,11 @@ class CineWindow(Adw.ApplicationWindow):
         is_muted = button.props.active
         self.mpv.mute = is_muted
 
-    def _on_progress_motion(self, _controller, x, _y):
+    def _on_progress_motion(self, _controller, x, y):
+        if (x, y) == self.prev_prog_motion_xy:
+            return
+        self.prev_prog_motion_xy = (x, y)
+
         width = self.video_progress_scale.get_width()
         duration = self.video_progress_adjustment.props.upper
         if width <= 0 or duration <= 0:
