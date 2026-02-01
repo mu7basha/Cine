@@ -34,9 +34,7 @@ msgstr "شغّل فيديوهاتك"
 #. TRANSLATORS: Search terms to find this application. Do NOT translate or localize the semicolons! The list MUST also end with a semicolon!
 #: data/io.github.diegopvlk.Cine.desktop.in:10
 msgid "Audio;Video;Movie;TV;Film;Clip;Player;Cine;mpv;"
-msgstr ""
-"Audio;Video;Movie;TV;Film;Clip;Player;Cine;mpv;صوت;فيديو;مقطع;مقطع "
-"فيديو;فيلم;مشغل;سيني;لقطة;"
+msgstr "Audio;Video;Movie;TV;Film;Clip;Player;Cine;mpv;صوت;فيديو;مقطع;فيلم;مشغل;سيني;لقطة;"
 
 #: data/io.github.diegopvlk.Cine.desktop.in:18 src/shortcuts-dialog.blp:11
 #: src/window.blp:117
