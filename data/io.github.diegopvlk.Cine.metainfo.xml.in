@@ -33,24 +33,24 @@
 
   <branding>
     <color type="primary" scheme_preference="light">#C7E7EC</color>
-    <color type="primary" scheme_preference="dark">#284754</color>
+    <color type="primary" scheme_preference="dark">#283C54</color>
   </branding>
 
   <screenshots>
     <screenshot type="default">
-      <image>https://raw.githubusercontent.com/diegopvlk/Cine/ccb285bdf3d20b6c010b0d522fc8257b857bb009/screenshots/video.png</image>
+      <image>https://raw.githubusercontent.com/diegopvlk/Cine/f5b21fb60d862dc05bad6cf0089bbd7369fb396a/screenshots/video.png</image>
       <caption>Video Playing</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/diegopvlk/Cine/ccb285bdf3d20b6c010b0d522fc8257b857bb009/screenshots/preferences.png</image>
+      <image>https://raw.githubusercontent.com/diegopvlk/Cine/f5b21fb60d862dc05bad6cf0089bbd7369fb396a/screenshots/preferences.png</image>
       <caption>Preferences</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/diegopvlk/Cine/62c79b1342012ea57824c0b385fab955a5a5762d/screenshots/options.png</image>
+      <image>https://raw.githubusercontent.com/diegopvlk/Cine/f5b21fb60d862dc05bad6cf0089bbd7369fb396a/screenshots/options.png</image>
       <caption>Video Options</caption>
     </screenshot>
     <screenshot>
-      <image>https://raw.githubusercontent.com/diegopvlk/Cine/ccb285bdf3d20b6c010b0d522fc8257b857bb009/screenshots/window.png</image>
+      <image>https://raw.githubusercontent.com/diegopvlk/Cine/f5b21fb60d862dc05bad6cf0089bbd7369fb396a/screenshots/window.png</image>
       <caption>Main Window</caption>
     </screenshot>
   </screenshots>
@@ -71,6 +71,19 @@
   </requires>
 
   <releases>
+    <release version="1.0.4" date="2026-02-02">
+      <description translate="no">
+        <ul>
+          <li>Added hue to video options</li>
+          <li>Improved shortcuts categorization</li>
+          <li>Added shortcuts for prev/next chapters</li>
+          <li>The controls now uses custom icons for better compatibility</li>
+          <li>Fixes and performance improvements</li>
+          <li>Added Arabic translation</li>
+          <li>Added Italian translation</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.3" date="2026-01-30">
       <description translate="no">
         <ul>
