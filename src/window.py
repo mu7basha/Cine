@@ -64,6 +64,9 @@ libgl = ctypes.CDLL("libGL.so.1")
 glGetIntegerv = libgl.glGetIntegerv
 glGetIntegerv.argtypes = [ctypes.c_uint, ctypes.POINTER(ctypes.c_int)]
 
+gtk = ctypes.CDLL("libgtk-4.so.1")
+display = Gdk.Display.get_default()
+
 
 @Gtk.Template(resource_path="/io/github/diegopvlk/Cine/window.ui")
 class CineWindow(Adw.ApplicationWindow):
@@ -1040,21 +1043,26 @@ class CineWindow(Adw.ApplicationWindow):
         return True
 
     def _get_display_param(self):
-        gdk_c = ctypes.CDLL(None)
-        display = Gdk.Display.get_default()
         param = {}
+
+        # see https://gist.github.com/omnp/6ac3385e2b3f6cab987d84e6477e636a
+
+        def get_pointer(display):
+            ctypes.pythonapi.PyCapsule_GetPointer.restype = ctypes.c_void_p
+            ctypes.pythonapi.PyCapsule_GetPointer.argtypes = (ctypes.py_object,)
+            return ctypes.pythonapi.PyCapsule_GetPointer(display.__gpointer__, None)
 
         try:
             if isinstance(display, GdkWayland.WaylandDisplay):
-                gdk_c.gdk_wayland_display_get_wl_display.restype = ctypes.c_void_p
-                gdk_c.gdk_wayland_display_get_wl_display.argtypes = [ctypes.c_void_p]
-                ptr = gdk_c.gdk_wayland_display_get_wl_display(hash(display))
+                gtk.gdk_wayland_display_get_wl_display.restype = ctypes.c_void_p
+                gtk.gdk_wayland_display_get_wl_display.argtypes = [ctypes.c_void_p]
+                ptr = gtk.gdk_wayland_display_get_wl_display(get_pointer(display))
                 if ptr:
                     param["wl_display"] = ptr
             elif isinstance(display, GdkX11.X11Display):
-                gdk_c.gdk_x11_display_get_xdisplay.restype = ctypes.c_void_p
-                gdk_c.gdk_x11_display_get_xdisplay.argtypes = [ctypes.c_void_p]
-                ptr = gdk_c.gdk_x11_display_get_xdisplay(hash(display))
+                gtk.gdk_x11_display_get_xdisplay.restype = ctypes.c_void_p
+                gtk.gdk_x11_display_get_xdisplay.argtypes = [ctypes.c_void_p]
+                ptr = gtk.gdk_x11_display_get_xdisplay(get_pointer(display))
                 if ptr:
                     param["x11_display"] = ptr
         except Exception as e:
