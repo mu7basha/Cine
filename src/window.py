@@ -893,10 +893,8 @@ class CineWindow(Adw.ApplicationWindow):
 
     def _on_drop_leave(self, _target):
         GLib.timeout_add(10, self.revealer_drop_indicator.set_reveal_child, False)
-        GLib.timeout_add(
-            100, self.drop_icon.set_from_icon_name, "cine-playback-start-symbolic"
-        )
-        GLib.timeout_add(100, self.drop_label.set_text, _("Play"))
+        GLib.timeout_add(100, self.drop_icon.set_from_icon_name, "")
+        GLib.timeout_add(100, self.drop_label.set_text, "")
 
     def _on_drop(self, _target, list: Gdk.FileList, _x, _y):
         first_file = True
